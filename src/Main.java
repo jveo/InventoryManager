@@ -1,4 +1,5 @@
 import Tabs.AddItemsTab;
+import Tabs.GraphItemsTab;
 import Tabs.ViewItemsTab;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -21,6 +22,7 @@ public class Main extends Application {
         Menu login = new Menu("Login");
         Menu settings = new Menu("Settings");
         Menu exit = new Menu("Exit");
+
         MenuItem logout = new MenuItem("Logout");//<-- is attached to the login button as a dropdown item
         login.getItems().add(logout);
         //added all the menu buttons to the menu bar
@@ -30,9 +32,12 @@ public class Main extends Application {
         TabPane tabPane = new TabPane();
         AddItemsTab addItems = new AddItemsTab();
         ViewItemsTab viewItems = new ViewItemsTab();
+        GraphItemsTab graphItems = new GraphItemsTab();
+
+
         //disabled the ability to close tabs
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        tabPane.getTabs().addAll(addItems, viewItems);
+        tabPane.getTabs().addAll(addItems, viewItems, graphItems);
 
 
         //EXIT menu option
