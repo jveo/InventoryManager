@@ -1,6 +1,6 @@
-import Tabs.AddItemsTab;
-import Tabs.GraphItemsTab;
-import Tabs.ViewItemsTab;
+import tabs.AddItemsTab;
+import tabs.StatsTab;
+import tabs.ViewItemsTab;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         BorderPane root = new BorderPane();
-        Scene scene = new Scene(root, 1024, 768);
+        Scene scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
 
         //created menu / menuItem options
         MenuBar menuBar = new MenuBar();
@@ -25,6 +25,7 @@ public class Main extends Application {
 
         MenuItem logout = new MenuItem("Logout");//<-- is attached to the login button as a dropdown item
         login.getItems().add(logout);
+
         //added all the menu buttons to the menu bar
         menuBar.getMenus().addAll(login, settings, exit);
 
@@ -32,12 +33,13 @@ public class Main extends Application {
         TabPane tabPane = new TabPane();
         AddItemsTab addItems = new AddItemsTab();
         ViewItemsTab viewItems = new ViewItemsTab();
-        GraphItemsTab graphItems = new GraphItemsTab();
+        StatsTab statsTab = new StatsTab();
+
 
 
         //disabled the ability to close tabs
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        tabPane.getTabs().addAll(addItems, viewItems, graphItems);
+        tabPane.getTabs().addAll(addItems, viewItems, statsTab);
 
 
         //EXIT menu option
@@ -51,7 +53,7 @@ public class Main extends Application {
         //set the menu bar to appear at the top
         root.setTop(menuBar);
 
-        primaryStage.setTitle("Inventory Manager");
+        primaryStage.setTitle("Shoe Inventory Manager");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

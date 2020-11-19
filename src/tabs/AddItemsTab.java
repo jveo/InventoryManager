@@ -1,4 +1,4 @@
-package Tabs;
+package tabs;
 
 import javafx.scene.control.Tab;
 
