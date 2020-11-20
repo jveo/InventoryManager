@@ -19,15 +19,15 @@ public class Main extends Application {
 
         //created menu / menuItem options
         MenuBar menuBar = new MenuBar();
-        Menu login = new Menu("Login");
+        Menu file = new Menu("File");
         Menu settings = new Menu("Settings");
-        Menu exit = new Menu("Exit");
+        Menu credits = new Menu("Credits");
 
-        MenuItem logout = new MenuItem("Logout");//<-- is attached to the login button as a dropdown item
-        login.getItems().add(logout);
+        MenuItem exit = new MenuItem("Exit");
+        file.getItems().add(exit);
 
         //added all the menu buttons to the menu bar
-        menuBar.getMenus().addAll(login, settings, exit);
+        menuBar.getMenus().addAll(file, settings, credits);
 
         //Tabs items
         TabPane tabPane = new TabPane();
