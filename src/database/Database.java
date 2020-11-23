@@ -14,12 +14,24 @@ public class Database {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" +
-                        DBConst.DB_NAME + "?serverTimezone=UTC", DBConst.DB_USER, DBConst.DB_PASSWORD);
+                        Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
                 System.out.println("Created connection!");
             } catch (Exception e){
                 e.printStackTrace();
             }
         }
+    }
+
+    // getInstance method
+    public static Database getInstance() {
+        if (instance == null){
+            instance = new Database();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
 
