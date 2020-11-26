@@ -4,7 +4,6 @@ import daos.BrandDAO;
 import database.DBConst;
 import database.Database;
 import pojo.Brand;
-import pojo.Shoe;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
