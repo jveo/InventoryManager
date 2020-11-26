@@ -9,6 +9,7 @@ public class Database {
 
     // create constructor
     private Database() {
+        // check if there is a connection that exists
         if (connection == null){
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
