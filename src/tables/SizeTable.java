@@ -3,7 +3,6 @@ package tables;
 import daos.SizeDAO;
 import database.DBConst;
 import database.Database;
-import pojo.Brand;
 import pojo.Size;
 
 import java.sql.ResultSet;
