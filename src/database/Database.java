@@ -1,7 +1,6 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 
 public class Database {
 
@@ -12,15 +11,39 @@ public class Database {
     private Database() {
         if (connection == null){
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://php.scweb.ca/" +
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/" +
                         Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
                 System.out.println("Created connection!");
             } catch (Exception e){
                 e.printStackTrace();
             }
+            // create the tables
+            try {
+                createTable(DBConst.TABLE_SHOE, DBConst.CREATE_TABLE_SHOE, connection);
+                createTable(DBConst.TABLE_BRAND, DBConst.CREATE_TABLE_SHOE_BRAND, connection);
+                createTable(DBConst.TABLE_SIZE, DBConst.CREATE_TABLE_SHOE_SIZE, connection);
+                createTable(DBConst.TABLE_ITEM, DBConst.CREATE_TABLE_ITEMS, connection);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
+
+    //createTable method
+    public void createTable(String tableName, String tableQuery, Connection connection) throws SQLException {
+        Statement createTables;
+        DatabaseMetaData md = connection.getMetaData();
+        ResultSet result = md.getTables(null, null, tableName, null);
+        if (result.next()){
+            System.out.println(tableName + " Table already exists!");
+        } else {
+            createTables = connection.createStatement();
+            boolean inserted = createTables.execute(tableQuery);
+            System.out.println("The " + tableName + " table has been inserted: " + !inserted);
+        }
+    }
+
 
     // getInstance method
     public static Database getInstance() {

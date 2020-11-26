@@ -5,14 +5,18 @@ public class Item {
     private int type;
     private int brand;
     private int size;
-    private int color;
 
-    public Item(int id, int type, int brand, int size, int color) {
+    public Item(int id, int type, int brand, int size) {
         this.id = id;
         this.type = type;
         this.brand = brand;
         this.size = size;
-        this.color = color;
+    }
+
+    public Item(int type, int brand, int size) {
+        this.type = type;
+        this.brand = brand;
+        this.size = size;
     }
 
     public Item() {
@@ -49,14 +53,6 @@ public class Item {
 
     public void setSize(int size) {
         this.size = size;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public void setColor(int color) {
-        this.color = color;
     }
 
     @Override

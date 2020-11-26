@@ -18,7 +18,7 @@ public class ShoeTable implements ShoeDAO {
     @Override
     public ArrayList<Shoe> getAllShoes() {
         //create query statement to execute
-        String query = "SELECT * FROM " + DBConst.TABLE_SHOE;
+        String query = "SELECT * FROM " + DBConst.TABLE_SHOE; // get all shoes from Shoe table
         shoes = new ArrayList<>();
 
         try {
@@ -41,13 +41,12 @@ public class ShoeTable implements ShoeDAO {
     public Shoe getShoe(int id) {
         //create query statement to execute
         String query = "SELECT * FROM " + DBConst.TABLE_SHOE + " WHERE " + DBConst.SHOE_COLUMN_ID + " = " + id;
-        shoes = new ArrayList<>();
 
         try {
             Statement getShoes = database.getConnection().createStatement();
             ResultSet data = getShoes.executeQuery(query);
 
-            //while there is data add into the table
+            //while there is data return a new Shoe
             while (data.next()) {
                 Shoe shoe = new Shoe(data.getInt(DBConst.SHOE_COLUMN_ID), data.getString(DBConst.SHOE_COLUMN_NAME));
                 return shoe;
