@@ -16,6 +16,10 @@ public class ItemTable implements ItemDAO {
     Database database = Database.getInstance();
     ArrayList<Item> items;
 
+    /**
+     *
+     * @return all items in the Item Database, (Brand,Shoe,Size)
+     */
     @Override
     public ArrayList<Item> getAllItems() {
         String query = "SELECT * FROM " + DBConst.TABLE_ITEM;

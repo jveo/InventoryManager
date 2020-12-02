@@ -15,6 +15,11 @@ public class ShoeTable implements ShoeDAO {
     Database database = Database.getInstance();
     ArrayList<Shoe> shoes;
 
+    /**
+     *
+     * @param
+     * @return Returns all shoes in database
+     */
     @Override
     public ArrayList<Shoe> getAllShoes() {
         //create query statement to execute
@@ -37,6 +42,12 @@ public class ShoeTable implements ShoeDAO {
         return shoes;
     }
 
+
+    /**
+     *
+     * @param id
+     * @return Returns shoe Object or null if doesn't exist in database
+     */
     @Override
     public Shoe getShoe(int id) {
         //create query statement to execute
@@ -46,12 +57,12 @@ public class ShoeTable implements ShoeDAO {
             Statement getShoes = database.getConnection().createStatement();
             ResultSet data = getShoes.executeQuery(query);
 
-            //while there is data return a new Shoe
-            while (data.next()) {
+            //if there is data return a new Shoe
+            if (data.next()) {
                 Shoe shoe = new Shoe(data.getInt(DBConst.SHOE_COLUMN_ID), data.getString(DBConst.SHOE_COLUMN_NAME));
                 return shoe;
-
             }
+
         } catch (SQLException e){
             e.printStackTrace();
         }

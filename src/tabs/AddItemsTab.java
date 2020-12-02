@@ -1,6 +1,10 @@
 package tabs;
 
 import javafx.scene.control.Tab;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import tables.BrandTable;
+import tables.ItemTable;
 
 public class AddItemsTab extends Tab {
 
