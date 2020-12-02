@@ -31,9 +31,9 @@ public class Main extends Application {
 
         //Tabs items
         TabPane tabPane = new TabPane();
-        AddItemsTab addItems = new AddItemsTab();
-        ViewItemsTab viewItems = new ViewItemsTab();
-        StatsTab statsTab = new StatsTab();
+        AddItemsTab addItems = AddItemsTab.getInstance();
+        ViewItemsTab viewItems = ViewItemsTab.getInstance();
+        StatsTab statsTab = StatsTab.getInstance();
 
 
 
@@ -46,7 +46,6 @@ public class Main extends Application {
         exit.setOnAction(e -> {
             System.exit(0);
         });
-
 
         //set tabpane to center
         root.setCenter(tabPane);

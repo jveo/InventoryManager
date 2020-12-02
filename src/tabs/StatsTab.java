@@ -6,7 +6,7 @@ public class StatsTab extends Tab {
 
     private static StatsTab tab;
 
-    public StatsTab(){
+    private StatsTab(){
         this.setText("Statistics");
     }
 

@@ -4,9 +4,9 @@ import javafx.scene.control.Tab;
 
 public class ViewItemsTab extends Tab {
 
-    public static ViewItemsTab tab;
+    private static ViewItemsTab tab;
 
-    public ViewItemsTab(){
+    private ViewItemsTab(){
         this.setText("View Items");
     }
 

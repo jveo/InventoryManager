@@ -6,7 +6,7 @@ public class AddItemsTab extends Tab {
 
     private static AddItemsTab tab;
 
-    public AddItemsTab(){
+    private AddItemsTab(){
         this.setText("Add Item");
     }
 
