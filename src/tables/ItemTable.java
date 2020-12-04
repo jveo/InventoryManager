@@ -60,11 +60,31 @@ public class ItemTable implements ItemDAO {
 
     @Override
     public void createItem(Item item) {
-
+        String query = "INSERT INTO " + DBConst.TABLE_ITEM +
+                "(" + DBConst.ITEM_COLUMN_TYPE + "," +
+                DBConst.ITEM_COLUMN_BRAND + "," +
+                DBConst.ITEM_COLUMN_SIZE + "," +
+                DBConst.ITEM_COLUMN_CONDITION + ") VALUES ('" +
+                item.getType() + "','" + item.getBrand() + "','" +
+                item.getSize() + "','" + item.getCondition() +
+                "')";
+        try {
+            database.getConnection().createStatement().execute(query);
+            System.out.println("Inserted Record");
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteItem(int id) {
+        String query  = "DELETE FROM " + DBConst.TABLE_ITEM + " WHERE " + DBConst.ITEM_COLUMN_ID + " = " + id;
+        try {
+            database.getConnection().createStatement().execute(query);
+            System.out.println("Record Deleted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 }

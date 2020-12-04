@@ -23,7 +23,7 @@ public class Database {
             try {
                 createTable(DBConst.TABLE_SHOE, DBConst.CREATE_TABLE_SHOE, connection);
                 createTable(DBConst.TABLE_BRAND, DBConst.CREATE_TABLE_SHOE_BRAND, connection);
-                createTable(DBConst.TABLE_SIZE, DBConst.CREATE_TABLE_SHOE_SIZE, connection);
+                createTable(DBConst.TABLE_CONDITION, DBConst.CREATE_TABLE_SHOE_CONDITION, connection);
                 createTable(DBConst.TABLE_ITEM, DBConst.CREATE_TABLE_ITEMS, connection);
             }catch (Exception e){
                 e.printStackTrace();
