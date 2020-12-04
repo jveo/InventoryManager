@@ -8,6 +8,7 @@ public class DBConst {
     public static final String ITEM_COLUMN_TYPE = "type";
     public static final String ITEM_COLUMN_BRAND = "brand";
     public static final String ITEM_COLUMN_SIZE = "size";
+    public static final String ITEM_COLUMN_CONDITION= "condition";
 
     // SHOE TABLE
     public static final String TABLE_SHOE = "shoe";
@@ -19,11 +20,10 @@ public class DBConst {
     public static final String BRAND_COLUMN_ID = "id";
     public static final String BRAND_COLUMN_SHOE_BRAND = "brand";
 
-    // SIZE TABLE
-    public static final String TABLE_SIZE = "size";
-    public static final String SIZE_COLUMN_ID = "id";
-    public static final String SIZE_COLUMN_SHOE_SIZE = "size";
-    public static final String SIZE_COLUMN_SHOE_GENDER = "gender";
+    // CONDITION TABLE
+    public static final String TABLE_CONDITION = "condition";
+    public static final String CONDITION_COLUMN_ID = "id";
+    public static final String CONDITION_COLUMN_SHOE_CONDITION = "size";
 
     // create Tables
     public static final String CREATE_TABLE_SHOE =
@@ -40,12 +40,12 @@ public class DBConst {
                     "PRIMARY KEY(" + BRAND_COLUMN_ID + ")" +
                     ")";
 
-    public static final String CREATE_TABLE_SHOE_SIZE =
-            "CREATE TABLE " + TABLE_SIZE + "(" +
-                    SIZE_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
-                    SIZE_COLUMN_SHOE_SIZE + " VARCHAR, " +
-                    SIZE_COLUMN_SHOE_GENDER + " VARCHAR(10), " +
-                    "PRIMARY KEY(" + SIZE_COLUMN_ID + ")" +
+
+    public static final String CREATE_TABLE_SHOE_CONDITION =
+            "CREATE TABLE " + TABLE_CONDITION + "(" +
+                    CONDITION_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
+                    CONDITION_COLUMN_SHOE_CONDITION + " VARCHAR, " +
+                    "PRIMARY KEY(" + CONDITION_COLUMN_ID + ")" +
                     ")";
 
     //create Item table
@@ -55,10 +55,10 @@ public class DBConst {
                     ITEM_COLUMN_TYPE + " int NOT NULL"  +
                     ITEM_COLUMN_BRAND + " int NOT NULL"  +
                     ITEM_COLUMN_SIZE + " int NOT NULL"  +
+                    ITEM_COLUMN_CONDITION + "int NOT NULL" +
                     "FOREIGN KEY (" + ITEM_COLUMN_BRAND + ")" +
                     " REFERENCES " + TABLE_BRAND + "(" + BRAND_COLUMN_ID + "),"+
                     "FOREIGN KEY (" + ITEM_COLUMN_SIZE + ")" +
-                    " REFERENCES " + TABLE_SIZE + "(" + SIZE_COLUMN_ID + "),"+
                     "FOREIGN KEY (" + SHOE_COLUMN_NAME + ")" +
                     " REFERENCES " + TABLE_SHOE + "(" + SHOE_COLUMN_ID + "))";
 

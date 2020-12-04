@@ -4,7 +4,6 @@ import daos.ItemDAO;
 import database.DBConst;
 import database.Database;
 import pojo.Item;
-import pojo.Size;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
