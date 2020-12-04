@@ -5,18 +5,21 @@ public class Item {
     private int type;
     private int brand;
     private int size;
+    private int condition;
 
-    public Item(int id, int type, int brand, int size) {
+    public Item(int id, int type, int brand, int size, int condition) {
         this.id = id;
         this.type = type;
         this.brand = brand;
         this.size = size;
+        this.condition = condition;
     }
 
-    public Item(int type, int brand, int size) {
+    public Item(int type, int brand, int size, int condition) {
         this.type = type;
         this.brand = brand;
         this.size = size;
+        this.condition = condition;
     }
 
     public Item() {
@@ -53,6 +56,14 @@ public class Item {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public int getCondition() {
+        return condition;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
     }
 
     @Override

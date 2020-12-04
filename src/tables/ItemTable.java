@@ -41,7 +41,21 @@ public class ItemTable implements ItemDAO {
 
     @Override
     public Item getItem(int id) {
-        return null;
+        String query = "SELECT FROM " + DBConst.TABLE_ITEM + " WHERE " + DBConst.ITEM_COLUMN_ID + " = " + id;
+        Item item = new Item();
+        try {
+            Statement getItem = database.getConnection().createStatement();
+            ResultSet data = getItem.executeQuery(query);
+            data.next();
+            items.add(new Item(data.getInt(DBConst.ITEM_COLUMN_ID),
+                    data.getInt(DBConst.ITEM_COLUMN_TYPE),
+                    data.getInt(DBConst.ITEM_COLUMN_BRAND),
+                    data.getInt(DBConst.ITEM_COLUMN_SIZE),
+                    data.getInt(DBConst.ITEM_COLUMN_CONDITION)));
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
