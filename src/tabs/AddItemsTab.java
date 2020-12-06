@@ -33,14 +33,13 @@ public class AddItemsTab extends Tab {
 
         Text name = new Text("Name");
         pane.add(name, 0, 0);
-        TextField year = new TextField();
-        pane.add(year, 1, 0);
+        TextField nameTextField = new TextField();
+        pane.add(nameTextField, 1, 0);
 
         Text size = new Text("Size");
         pane.add(size, 0, 1);
-        ComboBox<Shoe> shoeSizeComboBox = new ComboBox<>();
-        shoeSizeComboBox.setItems(FXCollections.observableList(shoeTable.getAllShoes()));
-        pane.add(shoeSizeComboBox,1,1);
+        TextField sizeTextField = new TextField();
+        pane.add(sizeTextField, 1, 1);
 
         Text brand = new Text("Brand");
         pane.add(brand, 0, 2);
@@ -62,7 +61,7 @@ public class AddItemsTab extends Tab {
         submit.setOnAction(e->{
             Item item = new Item(
                     Integer.parseInt(name.getText()),
-                    shoeSizeComboBox.getSelectionModel().getSelectedItem().getId(),
+                    Integer.parseInt(size.getText()),
                     comboBrand.getSelectionModel().getSelectedItem().getId(),
                     comboCondition.getSelectionModel().getSelectedItem().getId());
                     itemTable.createItem(item);
