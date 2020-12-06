@@ -37,12 +37,9 @@ public class Main extends Application {
         StatsTab statsTab = StatsTab.getInstance();
         RemoveItemTab removeItem = RemoveItemTab.getInstance();
 
-
-
         //disabled the ability to close tabs
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         tabPane.getTabs().addAll(addItems, removeItem, viewItems, statsTab);
-
 
         //EXIT menu option
         exit.setOnAction(e -> {

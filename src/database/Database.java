@@ -13,13 +13,11 @@ public class Database {
         if (connection == null){
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/" +
-                        Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
-                System.out.println("Created connection!");
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/" + Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
+                System.out.println("Created Connection");
             } catch (Exception e){
                 e.printStackTrace();
             }
-            // create the tables
             try {
                 createTable(DBConst.TABLE_SHOE, DBConst.CREATE_TABLE_SHOE, connection);
                 createTable(DBConst.TABLE_BRAND, DBConst.CREATE_TABLE_SHOE_BRAND, connection);

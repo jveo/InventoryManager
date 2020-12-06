@@ -9,3 +9,4 @@ public class Login {
     public static final String DB_USER = "jviau";
     public static final String DB_PASSWORD = "26mnq26mnqjkkmwjkkmw";
 }
+

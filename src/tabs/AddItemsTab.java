@@ -1,6 +1,7 @@
 package tabs;
-
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
@@ -32,26 +33,25 @@ public class AddItemsTab extends Tab {
 
         Text name = new Text("Name");
         pane.add(name, 0, 0);
-
-        ComboBox<Shoe> shoeComboBox = new ComboBox<>();
-        shoeComboBox.setItems(FXCollections.observableList(shoeTable.getAllShoes()));
-        pane.add(shoeComboBox,1,0);
-
-
-        Text yearTitle = new Text("Year");
-        pane.add(yearTitle, 0, 1);
-
         TextField year = new TextField();
-        pane.add(year, 1, 1);
+        pane.add(year, 1, 0);
 
-        Text condition = new Text("Brand");
-        pane.add(condition, 0, 2);
+        Text size = new Text("Size");
+        pane.add(size, 0, 1);
+        ComboBox<Shoe> shoeSizeComboBox = new ComboBox<>();
+        shoeSizeComboBox.setItems(FXCollections.observableList(shoeTable.getAllShoes()));
+        pane.add(shoeSizeComboBox,1,1);
 
+        Text brand = new Text("Brand");
+        pane.add(brand, 0, 2);
         ComboBox<Brand> comboBrand = new ComboBox<>();
         comboBrand.setItems(
                 FXCollections.observableArrayList(brandTable.getAllBrands()));
         pane.add(comboBrand, 1, 2);
 
+
+        Text condition = new Text("Condition");
+        pane.add(condition, 0, 3);
         ComboBox<Condition> comboCondition = new ComboBox<>();
         comboCondition.setItems(
                 FXCollections.observableArrayList(conditionTable.getAllConditions()));
@@ -61,15 +61,18 @@ public class AddItemsTab extends Tab {
         Button submit = new Button("Submit");
         submit.setOnAction(e->{
             Item item = new Item(
-                    shoeComboBox.getSelectionModel().getSelectedItem().getId(),
-                    Integer.parseInt(year.getText()),
+                    Integer.parseInt(name.getText()),
+                    shoeSizeComboBox.getSelectionModel().getSelectedItem().getId(),
                     comboBrand.getSelectionModel().getSelectedItem().getId(),
                     comboCondition.getSelectionModel().getSelectedItem().getId());
-            itemTable.createItem(item);
-            StatsTab.getInstance().generateChart();
-            RemoveItemTab.getInstance().refreshTable();
+                    itemTable.createItem(item);
+                    //StatsTab.getInstance().generateChart();
+                    RemoveItemTab.getInstance().refreshTable();
         });
         pane.add(submit, 0, 4);
+
+
+        pane.setPadding(new Insets(15));
         this.setContent(pane);
 
     }
