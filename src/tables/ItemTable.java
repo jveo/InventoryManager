@@ -3,8 +3,10 @@ package tables;
 import daos.ItemDAO;
 import database.DBConst;
 import database.Database;
+import pojo.DisplayShoe;
 import pojo.Item;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -86,5 +88,49 @@ public class ItemTable implements ItemDAO {
             e.printStackTrace();
         }
 
+    }
+
+    public ArrayList<DisplayShoe> getPrettyItems(){
+        ArrayList<DisplayShoe> items = new ArrayList<DisplayShoe>();
+        String query = "SELECT item.id, coin.name AS coin_name, " +
+                " item.year, coin_condition.name as coin_condition," +
+                " location.name as location_name " +
+                " from item " +
+                "JOIN coin on item.name = coin.id " +
+                "JOIN coin_condition on item.coin_condition = coin_condition.id " +
+                "JOIN location ON item.location = location.id " +
+                "ORDER BY item.id ASC";
+        try {
+            Statement getItems = database.getConnection().createStatement();
+            ResultSet data = getItems.executeQuery(query);
+            while(data.next()) {
+                items.add(new DisplayShoe(data.getInt("id"),
+                        data.getString("coin_name"),
+                        data.getString("year"),
+                        data.getString("coin_condition"),
+                        data.getString("location_name")));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return items;
+    }
+
+    public int getItemCount(int coin) {
+        int count = -1;
+        try {
+            PreparedStatement getCount = database.getConnection()
+                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_ITEM + " WHERE "
+                                    + DBConst.ITEM_COLUMN_TYPE + " = '" + coin + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
+            ResultSet data = getCount.executeQuery();
+            data.last();
+            count = data.getRow();
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }
