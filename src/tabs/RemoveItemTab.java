@@ -1,6 +1,8 @@
 package tabs;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -16,50 +18,51 @@ public class RemoveItemTab extends Tab {
     public TableView tableView;
 
     private RemoveItemTab(){
-        this.setText("Remove Item");
+        this.setText("View/Remove Items");
 
-//        ItemTable itemTable = new ItemTable();
-//
-//        BorderPane root = new BorderPane();
-//        tableView = new TableView();
-//
-//        TableColumn<DisplayShoe, String> column1 =
-//                new TableColumn<>("Item Name");
-//        column1.setCellValueFactory(
-//                e -> new SimpleStringProperty(e.getValue().getType()));
-//        tableView.getColumns().add(column1);
-//
-//        TableColumn<DisplayShoe, String> column2 =
-//                new TableColumn<>("Item Condition");
-//        column2.setCellValueFactory(
-//                e -> new SimpleStringProperty(e.getValue().get));
-//        tableView.getColumns().add(column2);
-//
-//        TableColumn<DisplayShoe, String> column3 =
-//                new TableColumn<>("Item Year");
-//        column3.setCellValueFactory(
-//                e -> new SimpleStringProperty(
-//                        e.getValue().getYear()));
-//        tableView.getColumns().add(column3);
-//
-//
-//        TableColumn<DisplayShoe, String> column4 =
-//                new TableColumn<>("Item Location");
-//        column4.setCellValueFactory(
-//                e -> new SimpleStringProperty(
-//                        e.getValue().getLocation()));
-//        tableView.getColumns().add(column4);
-//        tableView.getItems().addAll(itemTable.getPrettyItems());
-//        root.setCenter(tableView);
-//
-//        Button removeButton = new Button("Remove");
-//        removeButton.setOnAction(e->{
-//            DisplayItem item = (DisplayItem) tableView.getSelectionModel().getSelectedItem();
-//            itemTable.deleteItem(item.getId());
-//            refreshTable();
-//            StatsTab.getInstance().generateChart();
-//        });
-//        root.setBottom(removeButton);
+        ItemTable itemTable = new ItemTable();
+
+        BorderPane pane = new BorderPane();
+        tableView = new TableView();
+
+        TableColumn<DisplayShoe, String> column1 =
+                new TableColumn<>("Item Name");
+        column1.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getType()));
+        tableView.getColumns().add(column1);
+
+        TableColumn<DisplayShoe, String> column2 =
+                new TableColumn<>("Size");
+        column2.setCellValueFactory(
+                e -> new SimpleStringProperty(e.getValue().getSize()));
+        tableView.getColumns().add(column2);
+
+        TableColumn<DisplayShoe, String> column3 =
+                new TableColumn<>("Brand");
+        column3.setCellValueFactory(
+                e -> new SimpleStringProperty(
+                        e.getValue().getBrand()));
+        tableView.getColumns().add(column3);
+
+
+        TableColumn<DisplayShoe, String> column4 =
+                new TableColumn<>("Item Condition");
+        column4.setCellValueFactory(
+                e -> new SimpleStringProperty(
+                        e.getValue().getCondition()));
+        tableView.getColumns().add(column4);
+        tableView.getItems().addAll(itemTable.getPrettyItems());
+        pane.setCenter(tableView);
+
+        Button removeButton = new Button("Remove");
+        removeButton.setOnAction(e->{
+            DisplayShoe item = (DisplayShoe) tableView.getSelectionModel().getSelectedItem();
+            itemTable.deleteItem(item.getId());
+            refreshTable();
+            StatsTab.getInstance().generateChart();
+        });
+        pane.setBottom(removeButton);
+        this.setContent(pane);
     }
 
     public static RemoveItemTab getInstance(){

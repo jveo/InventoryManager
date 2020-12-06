@@ -1,7 +1,6 @@
 import tabs.AddItemsTab;
 import tabs.RemoveItemTab;
 import tabs.StatsTab;
-import tabs.ViewItemsTab;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -33,13 +32,12 @@ public class Main extends Application {
         //Tabs items
         TabPane tabPane = new TabPane();
         AddItemsTab addItems = AddItemsTab.getInstance();
-        ViewItemsTab viewItems = ViewItemsTab.getInstance();
         StatsTab statsTab = StatsTab.getInstance();
         RemoveItemTab removeItem = RemoveItemTab.getInstance();
 
         //disabled the ability to close tabs
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
-        tabPane.getTabs().addAll(addItems, removeItem, viewItems, statsTab);
+        tabPane.getTabs().addAll(addItems, removeItem, statsTab);
 
         //EXIT menu option
         exit.setOnAction(e -> {
