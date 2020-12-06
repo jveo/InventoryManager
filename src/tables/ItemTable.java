@@ -92,23 +92,23 @@ public class ItemTable implements ItemDAO {
 
     public ArrayList<DisplayShoe> getPrettyItems(){
         ArrayList<DisplayShoe> items = new ArrayList<DisplayShoe>();
-        String query = "SELECT item.id, coin.name AS coin_name, " +
-                " item.year, coin_condition.name as coin_condition," +
-                " location.name as location_name " +
+        String query = "SELECT item.id, shoe.name AS shoe_name, " +
+                " item.size, shoe_condition.name as shoe_condition," +
+                " brand.name as brand_name " +
                 " from item " +
-                "JOIN coin on item.name = coin.id " +
-                "JOIN coin_condition on item.coin_condition = coin_condition.id " +
-                "JOIN location ON item.location = location.id " +
+                "JOIN shoe on item.name = shoe.id " +
+                "JOIN shoe_condition on item.shoe_condition = shoe_condition.id " +
+                "JOIN brand ON item.brand = brand.id " +
                 "ORDER BY item.id ASC";
         try {
             Statement getItems = database.getConnection().createStatement();
             ResultSet data = getItems.executeQuery(query);
             while(data.next()) {
                 items.add(new DisplayShoe(data.getInt("id"),
-                        data.getString("coin_name"),
-                        data.getString("year"),
-                        data.getString("coin_condition"),
-                        data.getString("location_name")));
+                        data.getString("name"),
+                        data.getString("size"),
+                        data.getString("brand"),
+                        data.getString("condition")));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
