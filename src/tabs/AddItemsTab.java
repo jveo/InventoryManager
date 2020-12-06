@@ -55,7 +55,7 @@ public class AddItemsTab extends Tab {
         ComboBox<Condition> comboCondition = new ComboBox<>();
         comboCondition.setItems(
                 FXCollections.observableArrayList(conditionTable.getAllConditions()));
-        pane.add(comboCondition, 1, 2);
+        pane.add(comboCondition, 1, 3);
 
 
         Button submit = new Button("Submit");
@@ -63,16 +63,13 @@ public class AddItemsTab extends Tab {
             Item item = new Item(
                     shoeComboBox.getSelectionModel().getSelectedItem().getId(),
                     Integer.parseInt(year.getText()),
-                    comboCondition.getSelectionModel().getSelectedItem().getId(),
+                    comboBrand.getSelectionModel().getSelectedItem().getId(),
                     comboCondition.getSelectionModel().getSelectedItem().getId());
             itemTable.createItem(item);
             StatsTab.getInstance().generateChart();
             RemoveItemTab.getInstance().refreshTable();
         });
-        pane.add(submit, 0, 3);
-
-
-
+        pane.add(submit, 0, 4);
         this.setContent(pane);
 
     }
