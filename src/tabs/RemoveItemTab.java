@@ -63,6 +63,8 @@ public class RemoveItemTab extends Tab {
         });
         pane.setBottom(removeButton);
         this.setContent(pane);
+
+
     }
 
     public static RemoveItemTab getInstance(){

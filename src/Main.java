@@ -1,3 +1,5 @@
+import database.Database;
+import javafx.scene.chart.XYChart;
 import tabs.AddItemsTab;
 import tabs.RemoveItemTab;
 import tabs.StatsTab;
@@ -52,6 +54,8 @@ public class Main extends Application {
         primaryStage.setTitle("Shoe Inventory Manager");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        //Database database = Database.getInstance();
     }
 
 }

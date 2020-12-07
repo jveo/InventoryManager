@@ -33,7 +33,7 @@ public class Database {
     public void createTable(String tableName, String tableQuery, Connection connection) throws SQLException {
         Statement createTables;
         DatabaseMetaData md = connection.getMetaData();
-        ResultSet result = md.getTables(null, null, tableName, null);
+        ResultSet result = md.getTables("smilanisdb", null, tableName, null);
         if (result.next()){
             System.out.println(tableName + " Table already exists!");
         } else {

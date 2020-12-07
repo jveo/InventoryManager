@@ -33,7 +33,8 @@ public class ItemTable implements ItemDAO {
                 items.add(new Item(data.getInt(DBConst.ITEM_COLUMN_ID),
                         data.getInt(DBConst.ITEM_COLUMN_TYPE),
                         data.getInt(DBConst.ITEM_COLUMN_BRAND),
-                        data.getInt(DBConst.ITEM_COLUMN_SIZE)));
+                        data.getInt(DBConst.ITEM_COLUMN_SIZE),
+                        data.getInt(DBConst.ITEM_COLUMN_CONDITION)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,12 +118,12 @@ public class ItemTable implements ItemDAO {
         return items;
     }
 
-    public int getItemCount(int coin) {
+    public int getItemCount(int shoe) {
         int count = -1;
         try {
             PreparedStatement getCount = database.getConnection()
                     .prepareStatement("SELECT * FROM " + DBConst.TABLE_ITEM + " WHERE "
-                                    + DBConst.ITEM_COLUMN_TYPE + " = '" + coin + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
+                                    + DBConst.ITEM_COLUMN_TYPE + " = '" + shoe + "'", ResultSet.TYPE_SCROLL_SENSITIVE,
                             ResultSet.CONCUR_UPDATABLE);
             ResultSet data = getCount.executeQuery();
             data.last();

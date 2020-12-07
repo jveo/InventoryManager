@@ -18,6 +18,8 @@ public class StatsTab extends Tab {
 
     private StatsTab(){
         this.setText("Statistics");
+
+
         BorderPane pane = new BorderPane();
         chart = new PieChart();
         chart.setTitle("All Found Shoes");
@@ -27,6 +29,8 @@ public class StatsTab extends Tab {
 
         //set the center of the BorderPane to a PieChart
         this.setContent(pane);
+
+
     }
 
     public static StatsTab getInstance() {
