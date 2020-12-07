@@ -8,7 +8,7 @@ public class DBConst {
     public static final String ITEM_COLUMN_TYPE = "type";
     public static final String ITEM_COLUMN_BRAND = "brand";
     public static final String ITEM_COLUMN_SIZE = "size";
-    public static final String ITEM_COLUMN_CONDITION= "condition";
+    public static final String ITEM_COLUMN_CONDITION= "shoe_condition";
 
     // SHOE TABLE
     public static final String TABLE_SHOE = "shoe";
@@ -21,7 +21,7 @@ public class DBConst {
     public static final String BRAND_COLUMN_SHOE_BRAND = "name";
 
     // CONDITION TABLE
-    public static final String TABLE_CONDITION = "condition";
+    public static final String TABLE_CONDITION = "shoe_condition";
     public static final String CONDITION_COLUMN_ID = "id";
     public static final String CONDITION_COLUMN_SHOE_CONDITION = "name";
 

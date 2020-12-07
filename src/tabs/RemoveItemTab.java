@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import pojo.DisplayShoe;
 import tables.ItemTable;
 
-import java.security.PublicKey;
 
 public class RemoveItemTab extends Tab {
 
@@ -51,7 +50,7 @@ public class RemoveItemTab extends Tab {
                 e -> new SimpleStringProperty(
                         e.getValue().getCondition()));
         tableView.getColumns().add(column4);
-        tableView.getItems().addAll(itemTable.getPrettyItems());
+        //tableView.getItems().addAll(itemTable.getPrettyItems());
         pane.setCenter(tableView);
 
         Button removeButton = new Button("Remove");
@@ -77,7 +76,7 @@ public class RemoveItemTab extends Tab {
     public void refreshTable() {
         ItemTable table = new ItemTable();
         tableView.getItems().clear();
-        tableView.getItems().addAll(table.getPrettyItems());
+        //tableView.getItems().addAll(table.getPrettyItems());
     }
 
 

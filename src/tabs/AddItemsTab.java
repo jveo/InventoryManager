@@ -31,10 +31,12 @@ public class AddItemsTab extends Tab {
 
         GridPane pane = new GridPane();
 
-        Text name = new Text("Name");
-        pane.add(name, 0, 0);
-        TextField nameTextField = new TextField();
-        pane.add(nameTextField, 1, 0);
+        Text type = new Text("Type");
+        pane.add(type, 0, 0);
+        ComboBox<Shoe> comboType = new ComboBox<>();
+        comboType.setItems(
+                FXCollections.observableArrayList(shoeTable.getAllShoes()));
+        pane.add(comboType, 1, 0);
 
         Text size = new Text("Size");
         pane.add(size, 0, 1);
@@ -60,12 +62,12 @@ public class AddItemsTab extends Tab {
         Button submit = new Button("Submit");
         submit.setOnAction(e->{
             Item item = new Item(
-                    Integer.parseInt(name.getText()),
-                    Integer.parseInt(size.getText()),
+                    comboType.getSelectionModel().getSelectedItem().getId(),
+                    Integer.parseInt(sizeTextField.getText()),
                     comboBrand.getSelectionModel().getSelectedItem().getId(),
                     comboCondition.getSelectionModel().getSelectedItem().getId());
                     itemTable.createItem(item);
-                    //StatsTab.getInstance().generateChart();
+                    StatsTab.getInstance().generateChart();
                     RemoveItemTab.getInstance().refreshTable();
         });
         pane.add(submit, 0, 4);

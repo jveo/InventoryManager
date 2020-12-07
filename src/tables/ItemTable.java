@@ -43,8 +43,8 @@ public class ItemTable implements ItemDAO {
     }
 
     @Override
-    public Item getItem(int id) {
-        String query = "SELECT FROM " + DBConst.TABLE_ITEM + " WHERE " + DBConst.ITEM_COLUMN_ID + " = " + id;
+    public Item getItem(int itemId) {
+        String query = "SELECT FROM " + DBConst.TABLE_ITEM + " WHERE " + DBConst.ITEM_COLUMN_ID + " = " + itemId;
         Item item = new Item();
         try {
             Statement getItem = database.getConnection().createStatement();
@@ -91,6 +91,7 @@ public class ItemTable implements ItemDAO {
 
     }
 
+/**
     public ArrayList<DisplayShoe> getPrettyItems(){
         ArrayList<DisplayShoe> items = new ArrayList<DisplayShoe>();
         String query = "SELECT item.id, shoe.name AS shoe_name, " +
@@ -114,9 +115,14 @@ public class ItemTable implements ItemDAO {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+
         }
         return items;
+
+
     }
+
+ **/
 
     public int getItemCount(int shoe) {
         int count = -1;
