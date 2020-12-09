@@ -13,7 +13,8 @@ public class Database {
         if (connection == null){
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/" + Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
+                connection = DriverManager.getConnection("jdbc:mysql://localhost/" +
+                        Login.DB_NAME + "?serverTimezone=UTC", Login.DB_USER, Login.DB_PASSWORD);
                 System.out.println("Created Connection");
             } catch (Exception e){
                 e.printStackTrace();

@@ -68,6 +68,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return getBrand() + "";
+        return getType() + "";
     }
 }

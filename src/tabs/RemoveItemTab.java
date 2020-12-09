@@ -25,7 +25,7 @@ public class RemoveItemTab extends Tab {
         tableView = new TableView();
 
         TableColumn<DisplayShoe, String> column1 =
-                new TableColumn<>("Item Name");
+                new TableColumn<>("Type");
         column1.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getType()));
         tableView.getColumns().add(column1);
@@ -45,7 +45,7 @@ public class RemoveItemTab extends Tab {
 
 
         TableColumn<DisplayShoe, String> column4 =
-                new TableColumn<>("Item Condition");
+                new TableColumn<>("Condition");
         column4.setCellValueFactory(
                 e -> new SimpleStringProperty(
                         e.getValue().getCondition()));

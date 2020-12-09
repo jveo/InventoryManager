@@ -70,7 +70,7 @@ public class AddItemsTab extends Tab {
                     StatsTab.getInstance().generateChart();
                     RemoveItemTab.getInstance().refreshTable();
         });
-        pane.add(submit, 0, 4);
+        pane.add(submit, 1, 4);
 
 
         pane.setPadding(new Insets(15));

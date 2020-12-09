@@ -64,7 +64,7 @@ public class ItemTable implements ItemDAO {
     @Override
     public void createItem(Item item) {
         String query = "INSERT INTO " + DBConst.TABLE_ITEM +
-                "(" + DBConst.ITEM_COLUMN_TYPE + "," +
+                "(" + DBConst.ITEM_COLUMN_TYPE + ", " +
                 DBConst.ITEM_COLUMN_BRAND + "," +
                 DBConst.ITEM_COLUMN_SIZE + "," +
                 DBConst.ITEM_COLUMN_CONDITION + ") VALUES ('" +
@@ -91,14 +91,13 @@ public class ItemTable implements ItemDAO {
 
     }
 
-/**
     public ArrayList<DisplayShoe> getPrettyItems(){
         ArrayList<DisplayShoe> items = new ArrayList<DisplayShoe>();
-        String query = "SELECT item.id, shoe.name AS shoe_name, " +
+        String query = "SELECT item.id, shoe.type AS shoe_type, " +
                 " item.size, shoe_condition.name as shoe_condition," +
                 " brand.name as brand_name " +
                 " from item " +
-                "JOIN shoe on item.name = shoe.id " +
+                "JOIN shoe on item.type = shoe.id " +
                 "JOIN shoe_condition on item.shoe_condition = shoe_condition.id " +
                 "JOIN brand ON item.brand = brand.id " +
                 "ORDER BY item.id ASC";
@@ -110,7 +109,7 @@ public class ItemTable implements ItemDAO {
                         data.getString("name"),
                         data.getString("size"),
                         data.getString("brand"),
-                        data.getString("condition")));
+                        data.getString("shoe_condition")));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -122,7 +121,6 @@ public class ItemTable implements ItemDAO {
 
     }
 
- **/
 
     public int getItemCount(int shoe) {
         int count = -1;

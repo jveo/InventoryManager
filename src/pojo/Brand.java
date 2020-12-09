@@ -10,6 +10,10 @@ public class Brand {
         this.brand = brand;
     }
 
+    public Brand(String brand) {
+        this.brand = brand;
+    }
+
     public int getId() {
         return id;
     }

@@ -29,14 +29,14 @@ public class DBConst {
     public static final String CREATE_TABLE_SHOE =
             "CREATE TABLE " + TABLE_SHOE + "(" +
                     SHOE_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
-                    SHOE_COLUMN_NAME + " VARCHAR(20), " +
+                    SHOE_COLUMN_NAME + " VARCHAR(30), " +
                     "PRIMARY KEY(" + SHOE_COLUMN_ID + ")" +
                     ")";
 
     public static final String CREATE_TABLE_SHOE_BRAND =
             "CREATE TABLE " + TABLE_BRAND + "(" +
                     BRAND_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, " +
-                    BRAND_COLUMN_SHOE_BRAND + " VARCHAR(20), " +
+                    BRAND_COLUMN_SHOE_BRAND + " VARCHAR(30), " +
                     "PRIMARY KEY(" + BRAND_COLUMN_ID + ")" +
                     ")";
 
