@@ -38,17 +38,17 @@ public class AddItemsTab extends Tab {
                 FXCollections.observableArrayList(shoeTable.getAllShoes()));
         pane.add(comboType, 1, 0);
 
-        Text size = new Text("Size");
-        pane.add(size, 0, 1);
-        TextField sizeTextField = new TextField();
-        pane.add(sizeTextField, 1, 1);
-
         Text brand = new Text("Brand");
         pane.add(brand, 0, 2);
         ComboBox<Brand> comboBrand = new ComboBox<>();
         comboBrand.setItems(
                 FXCollections.observableArrayList(brandTable.getAllBrands()));
         pane.add(comboBrand, 1, 2);
+
+        Text size = new Text("Size");
+        pane.add(size, 0, 1);
+        TextField sizeTextField = new TextField();
+        pane.add(sizeTextField, 1, 1);
 
 
         Text condition = new Text("Condition");
@@ -63,8 +63,8 @@ public class AddItemsTab extends Tab {
         submit.setOnAction(e->{
             Item item = new Item(
                     comboType.getSelectionModel().getSelectedItem().getId(),
-                    Integer.parseInt(sizeTextField.getText()),
                     comboBrand.getSelectionModel().getSelectedItem().getId(),
+                    Integer.parseInt(sizeTextField.getText()),
                     comboCondition.getSelectionModel().getSelectedItem().getId());
                     itemTable.createItem(item);
                     StatsTab.getInstance().generateChart();

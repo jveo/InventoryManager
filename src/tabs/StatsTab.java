@@ -41,28 +41,24 @@ public class StatsTab extends Tab {
     }
 
     public void generateChart(){
-//        //Get access to the database
-//        ItemTable itemTable = new ItemTable();
-//        ShoeTable shoeTable = new ShoeTable();
-//        //Grab a list of coin types
-//        ArrayList<Shoe> shoesArrayList = shoeTable.getAllShoes();
-//        //Clear the data in the chart
-//        chart.getData().clear();
-//        //Build a list of PieChart data
-//        ArrayList<PieChart.Data> data = new ArrayList<>();
-//
-//        for(Shoe shoe : shoesArrayList) {
-//            //not add the record unless it has 1 or more coins
-//            if(itemTable.getItemCount(shoe.getId()) > 0) {
-//                data.add(new PieChart.Data(shoe.getName(),
-//                        itemTable.getItemCount(shoe.getId())));
-//            }
-//        }
-//        //Wrap the list in an ObservableList
-//        ObservableList<PieChart.Data> chartData =
-//                FXCollections.observableArrayList(data);
-//        //Populate the chart
-//        chart.setData(chartData);
+
+        ItemTable itemTable = new ItemTable();
+        ShoeTable shoeTable = new ShoeTable();
+
+        ArrayList<Shoe> shoesArrayList = shoeTable.getAllShoes();
+        chart.getData().clear();
+
+        ArrayList<PieChart.Data> data = new ArrayList<>();
+
+        for(Shoe shoe : shoesArrayList) {
+            if(itemTable.getItemCount(shoe.getId()) > 0) {
+                data.add(new PieChart.Data(shoe.getType(),
+                        itemTable.getItemCount(shoe.getId())));
+            }
+        }
+
+        ObservableList<PieChart.Data> chartData = FXCollections.observableArrayList(data);
+        chart.setData(chartData);
     }
 
 

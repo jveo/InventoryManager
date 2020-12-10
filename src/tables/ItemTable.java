@@ -93,7 +93,7 @@ public class ItemTable implements ItemDAO {
 
     public ArrayList<DisplayShoe> getPrettyItems(){
         ArrayList<DisplayShoe> items = new ArrayList<DisplayShoe>();
-        String query = "SELECT item.id, shoe.type AS shoe_type, " +
+        String query = "SELECT item.id, shoe.name AS shoe_type, " +
                 " item.size, shoe_condition.name as shoe_condition," +
                 " brand.name as brand_name " +
                 " from item " +
@@ -106,9 +106,9 @@ public class ItemTable implements ItemDAO {
             ResultSet data = getItems.executeQuery(query);
             while(data.next()) {
                 items.add(new DisplayShoe(data.getInt("id"),
-                        data.getString("name"),
+                        data.getString("shoe_type"),
+                        data.getString("brand_name"),
                         data.getString("size"),
-                        data.getString("brand"),
                         data.getString("shoe_condition")));
             }
         } catch (SQLException e) {
@@ -117,7 +117,6 @@ public class ItemTable implements ItemDAO {
 
         }
         return items;
-
 
     }
 

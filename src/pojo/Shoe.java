@@ -3,12 +3,12 @@ package pojo;
 public class Shoe {
     //properties
     private int id;
-    private String name;
+    private String type;
 
     //constructors
-    public Shoe(int id, String name) {
+    public Shoe(int id, String type) {
         this.id = id;
-        this.name = name;
+        this.type = type;
     }
 
     //getters and setters
@@ -20,16 +20,16 @@ public class Shoe {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return this.name;
+        return this.type;
     }
 }

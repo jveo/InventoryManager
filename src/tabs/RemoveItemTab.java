@@ -21,23 +21,23 @@ public class RemoveItemTab extends Tab {
 
         ItemTable itemTable = new ItemTable();
 
-        BorderPane pane = new BorderPane();
+        BorderPane root = new BorderPane();
         tableView = new TableView();
 
         TableColumn<DisplayShoe, String> column1 =
-                new TableColumn<>("Type");
+                new TableColumn<>("Shoe Type");
         column1.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getType()));
         tableView.getColumns().add(column1);
 
         TableColumn<DisplayShoe, String> column2 =
-                new TableColumn<>("Size");
+                new TableColumn<>("Shoe Size");
         column2.setCellValueFactory(
                 e -> new SimpleStringProperty(e.getValue().getSize()));
         tableView.getColumns().add(column2);
 
         TableColumn<DisplayShoe, String> column3 =
-                new TableColumn<>("Brand");
+                new TableColumn<>("Shoe Brand");
         column3.setCellValueFactory(
                 e -> new SimpleStringProperty(
                         e.getValue().getBrand()));
@@ -45,13 +45,13 @@ public class RemoveItemTab extends Tab {
 
 
         TableColumn<DisplayShoe, String> column4 =
-                new TableColumn<>("Condition");
+                new TableColumn<>("Shoe Condition");
         column4.setCellValueFactory(
                 e -> new SimpleStringProperty(
                         e.getValue().getCondition()));
         tableView.getColumns().add(column4);
-        //tableView.getItems().addAll(itemTable.getPrettyItems());
-        pane.setCenter(tableView);
+        tableView.getItems().addAll(itemTable.getPrettyItems());
+        root.setCenter(tableView);
 
         Button removeButton = new Button("Remove");
         removeButton.setOnAction(e->{
@@ -60,8 +60,8 @@ public class RemoveItemTab extends Tab {
             refreshTable();
             StatsTab.getInstance().generateChart();
         });
-        pane.setBottom(removeButton);
-        this.setContent(pane);
+        root.setBottom(removeButton);
+       this.setContent(root);
 
 
     }
@@ -74,9 +74,9 @@ public class RemoveItemTab extends Tab {
     }
 
     public void refreshTable() {
-        ItemTable table = new ItemTable();
+        ItemTable itemTable = new ItemTable();
         tableView.getItems().clear();
-        //tableView.getItems().addAll(table.getPrettyItems());
+        tableView.getItems().addAll(itemTable.getPrettyItems());
     }
 
 

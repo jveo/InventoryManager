@@ -22,14 +22,14 @@ public class Main extends Application {
         //created menu / menuItem options
         MenuBar menuBar = new MenuBar();
         Menu file = new Menu("File");
-        Menu settings = new Menu("Settings");
+
         Menu credits = new Menu("Credits");
 
         MenuItem exit = new MenuItem("Exit");
         file.getItems().add(exit);
 
         //added all the menu buttons to the menu bar
-        menuBar.getMenus().addAll(file, settings, credits);
+        menuBar.getMenus().addAll(file, credits);
 
         //Tabs items
         TabPane tabPane = new TabPane();
