@@ -72,8 +72,12 @@ public class AddItemsTab extends Tab {
         });
         pane.add(submit, 1, 4);
 
-
+        // set spacing and padding
         pane.setPadding(new Insets(15));
+        pane.setHgap(5);
+        pane.setVgap(7);
+        
+
         this.setContent(pane);
 
     }
